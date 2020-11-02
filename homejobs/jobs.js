@@ -1,5 +1,8 @@
-let string= "Loren";
 
-let logan= string.substring(0);
+const arreySum= (x,y,z) =>{
+let result= x+y+z
 
-console.log(logan)
+return result
+}
+
+console.log(arreySum(2,4,5))

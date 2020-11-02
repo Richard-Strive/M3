@@ -37,27 +37,81 @@ console.log(check50(2,30))
 3)
 Create a function to remove a character at the specified position of a given string and return the new string.
 */
+const removeChart=(string, num)=>{
+
+return string.substring(num)
+
+}
+
+console.log(removeChart("Paul",1))
 
 /*
 4)
  Create a function to find the largest of three given integers.
 
+const largestOfthree= (x,y,z)=>{
+if(x > y && z) 
+return "X it's bigger"
+if(y > z && x)
+return "Y it's bigger"
+if(z > x && y)
+return "Z it's bigger"
 
+}
 
 /*
 5)
 Create a function to check whether two numbers are in range 40..60 or in the range 70..100 inclusive.
 */
 
+const imInRange= (x,y)=>{
+
+if(10<x && x>60 || 70 <y && y>=100){
+    return true
+}
+else
+{
+    return false
+}
+
+}
+
 /*
 6) 
 Create a function to create a new string of specified copies (positive number) of a given string.
 */
 
+const copyString= (string, n)=>{
+
+if(n<0){
+    return false
+}
+else
+{
+   return string.repeat(n)
+}
+
+}
+
+console.log(copyString("Pollo", 6))
+
 /*
 7)
 Create a function to display the city name if the string begins with "Los" or "New" otherwise return blank.
 */
+const cityName= (string) =>{
+     if( string.startsWith("Los") || string.startsWith("New") ){
+         return string
+     }
+     else
+     {
+         return " "
+     }
+
+     }
+
+    console.log(cityName("Los Angeles"))
+
 
 /*
 8)
