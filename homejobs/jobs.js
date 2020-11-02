@@ -1,13 +1,9 @@
-const check50= (x,y)=>{
 
-    let sum= x+y
+const remChart= (string)=>{
+string=[]
+string.pop()
 
-if(sum === 50 || (x||y)===50 ){
-    return true
+return string
 }
-else
-{
-    return false
-}
-}
-console.log(check50(2,30))
+
+console.log(remChart(Richard))
