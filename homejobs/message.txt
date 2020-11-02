@@ -41,7 +41,8 @@ Create a function to remove a character at the specified position of a given str
 /*
 4)
  Create a function to find the largest of three given integers.
-*/
+
+
 
 /*
 5)
@@ -105,6 +106,34 @@ this would be a simple "Stefano".
 this would be a "DiegoRiccardo".
 34 has four factors: 1, 2, 17, and 34.
 this would be "34".
+
+const strangeThing= (x)=> {
+
+    let resultString= ""
+
+if(x%3===0){
+
+    resultString+="Diego"
+
+}
+if(x%5===0){
+
+    resultString+="Riccardo"
+}
+if(x%7===0){
+
+    resultString+="Stefano"
+}
+
+if(resultString.length===0){
+    return String(x)
+}
+
+return resultString
+
+}
+
+console.log(strangeThing(34))
 20)
 Create a function that given a phrase returns its acronym, like British Broadcasting Corporation returns BBC
 */

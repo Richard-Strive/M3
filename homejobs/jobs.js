@@ -1,9 +1,5 @@
+let string= "Loren";
 
-const remChart= (string)=>{
-string=[]
-string.pop()
+let logan= string.substring(0);
 
-return string
-}
-
-console.log(remChart(Richard))
+console.log(logan)
