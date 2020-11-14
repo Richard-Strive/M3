@@ -293,12 +293,13 @@
     crossorigin="anonymous"></script>
 
   <script>
-    const url = "https://striveschool-api.herokuapp.com/api/movies/Comedy"
+
     window.onload = async () => {
+      const url = "https://striveschool-api.herokuapp.com/api/movies/Comedy"
       try {
         let response = await fetch(url, {
           method: "GET", headers: {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFiZTlmMDRiY2RlMTAwMTc2MTZhZDMiLCJpYXQiOjE2MDUxMDIwNjUsImV4cCI6MTYwNjMxMTY2NX0.qSJS826eeI9Um7wiuwzQ91Lp1F2LreMln30295SYMvE"
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFiZTlmMDRiY2RlMTAwMTc2MTZhZDMiLCJpYXQiOjE2MDUzOTExNTUsImV4cCI6MTYwNjYwMDc1NX0.c1MEuYyIov_RFLDWx8kty3caqubZKDXluy2Vv1JUr5w"
           }
         })
         let data = await response.json();
@@ -312,6 +313,7 @@
           <h4>${movies.name}</h4>
             <img class="img-fluid" src="${movies.imageUrl}" alt="movie picture" />
             <p>${movies.description}</P>
+              <a class="btn btn-info" href="../dettaglio.html?id=${movies._id}">VIEW DETAILS</a>
           </div>`
 
           rowComedy.append(div)
