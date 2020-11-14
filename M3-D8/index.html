@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-between">
+    </div>
+  </div>
+  <style>
+    .row {
+      background-color: yellow;
+      height: 100%;
+      width: 100%;
+    }
+
+    .row {
+      background-color: yellow;
+    }
+  </style>
+
+
+
+  <script>
+    const row = document.querySelector(".row")
+    console.log(row)
+
+    const logo = document.querySelector("a")
+
+
+    window.onload = async () => {
+
+      try {
+
+        let response = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
+          headers: {
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFiZTlmMDRiY2RlMTAwMTc2MTZhZDMiLCJpYXQiOjE2MDUxMDIwNjUsImV4cCI6MTYwNjMxMTY2NX0.qSJS826eeI9Um7wiuwzQ91Lp1F2LreMln30295SYMvE"
+          }
+        })
+        let data = await response.json()
+        console.log(data)
+
+
+        data.forEach(user => {
+          card = document.createElement("card");
+          card.innerHTML = `<div class="card my-3 " style="width: 18rem;">
+  <img src="${user.imageUrl}" class="card-img-top" alt="...">
+  <h5 class="card-title text-center">${user.name}</h5>
+  <h6 class="card-title text-center">${user.brand}<h6> 
+    <p class="card-text text-center">${user.description}</p>
+    <p class="card-text text-center">${user.price}</p>
+    <div class="d-flex d-flex justify-content-center">
+    <a href="/details.html?id=${user._id}" target="_blank" class="btn btn-success">View your product</a>
+    </div>
+</div>`
+          row.appendChild(card)
+
+        })
+      } catch (error) {
+        console.log(error)
+        alert("Something went wrong")
+      }
+    }
+  </script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
