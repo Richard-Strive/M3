@@ -29,7 +29,7 @@
     </div>
     <!-- Optional JavaScript -->
     <script>
-        let url = "https://striveschool-api.herokuapp.com/api/movies/Comedy"
+        let url = `https://striveschool-api.herokuapp.com/api/movies/`
         console.log(url)
         let movie = document.querySelector(".movie")
         console.log(movie)
@@ -56,12 +56,30 @@
 </form>`
         }
 
+        const handleEdit = async () => {
+            let urlParams = new URLSearchParams(window.location.search);
+            let id = urlParams.get("id");
+
+            try {
+                let response = await fetch(url + id, {
+                    method: "PUT",
+                    headers: {
+                        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFiZTlmMDRiY2RlMTAwMTc2MTZhZDMiLCJpYXQiOjE2MDUzOTExNTUsImV4cCI6MTYwNjYwMDc1NX0.c1MEuYyIov_RFLDWx8kty3caqubZKDXluy2Vv1JUr5w"
+                    }
+                })
+
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
         const handleDelete = async () => {
             let urlParams = new URLSearchParams(window.location.search);
             let id = urlParams.get("id");
-            let category = urlParams.get("category")
+
             try {
-                let response = await fetch(url, {
+                let response = await fetch(url + id, {
                     method: "DELETE",
                     headers: {
                         "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFiZTlmMDRiY2RlMTAwMTc2MTZhZDMiLCJpYXQiOjE2MDUzOTExNTUsImV4cCI6MTYwNjYwMDc1NX0.c1MEuYyIov_RFLDWx8kty3caqubZKDXluy2Vv1JUr5w"
@@ -76,6 +94,7 @@
 
 
         window.onload = async () => {
+
             let urlParams = new URLSearchParams(window.location.search);
             let id = urlParams.get("id");
             console.log(id)
