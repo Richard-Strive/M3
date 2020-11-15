@@ -313,7 +313,7 @@
           <h4>${movies.name}</h4>
             <img class="img-fluid" src="${movies.imageUrl}" alt="movie picture" />
             <p>${movies.description}</P>
-              <a class="btn btn-info" href="../dettaglio.html?id=${movies._id}">VIEW DETAILS</a>
+              <a class="btn btn-info" href="../dettaglio.html?id=${movies._id}&&category=${movies.category}" target=_blank>VIEW DETAILS</a>
           </div>`
 
           rowComedy.append(div)

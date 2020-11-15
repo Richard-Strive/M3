@@ -16,11 +16,11 @@
     <div class="container text-center mt-5">
         <h1>Welcome to Details</h1>
         <h3>EDIT OR DELETE YOUR CREATION</h3>
-        <div class="moveis">
+        <div class="movie">
 
         </div>
-        <button type="submit" class="btn btn-lg mt-4 mb-4">EDIT</button>
-        <button type="submit" class="btn btn-lg mt-4 mb-4">DELETE</button>
+        <button class="btn btn-lg mt-4 mb-4" onclick="handleEdit()">EDIT</button>
+        <button class="btn btn-lg mt-4 mb-4" onclick="handleDelete()">DELETE</button>
     </div>
 
     </form>
@@ -31,6 +31,50 @@
     <script>
         let url = "https://striveschool-api.herokuapp.com/api/movies/Comedy"
         console.log(url)
+        let movie = document.querySelector(".movie")
+        console.log(movie)
+
+        let templateInnerMovie = (category, titolo, imageUrl, description) => {
+            return `
+<div class="form-group mt-5">
+    <input type="category"  id="category"
+        value="${category}" required>
+</div>
+    <input type="name"  id="title"
+        value="${titolo}" required>
+</div>
+<div class="form-group mt-3">
+    <input type="name" class="form-control" id="imageUrl" value="${imageUrl}"
+        required>
+</div>
+    <label for="exampleFormControlTextarea1">
+        <h4>Description</h4>
+    </label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+        placeholder="MAKE HERE A SHORT DESCRIPTION OF YOUR MOVIE " required>${description}</textarea>
+</div>
+</form>`
+        }
+
+        const handleDelete = async () => {
+            let urlParams = new URLSearchParams(window.location.search);
+            let id = urlParams.get("id");
+            let category = urlParams.get("category")
+            try {
+                let response = await fetch(url, {
+                    method: "DELETE",
+                    headers: {
+                        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFiZTlmMDRiY2RlMTAwMTc2MTZhZDMiLCJpYXQiOjE2MDUzOTExNTUsImV4cCI6MTYwNjYwMDc1NX0.c1MEuYyIov_RFLDWx8kty3caqubZKDXluy2Vv1JUr5w"
+                    }
+                })
+
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+
         window.onload = async () => {
             let urlParams = new URLSearchParams(window.location.search);
             let id = urlParams.get("id");
@@ -44,21 +88,25 @@
                 })
                 let data = await response.json();
                 console.log(data)
+                let film = data.filter(movie => movie._id === id)[0] // mi restituisce un array con un solo object e con [0] sono sentrato nel array per selezionare l'object
+                console.log(film)
 
-                data.forEach(movies => {
-                    if (id === movies._id) {
-                        console.log("IT IS")
-                    } else {
-                        console.log("GO TO SLEEP")
-                    }
-                });
+                const { category, description, name, imageUrl } = film;
+
+                movie.innerHTML += templateInnerMovie(film.category, film.name, film.imageUrl, film.description)
 
             }
             catch (error) {
                 console.log(error)
             }
+
         }
+
+
+
+
     </script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
