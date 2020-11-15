@@ -37,13 +37,21 @@
             console.log(id)
 
             try {
-                let response = await fetch(url + id, {
+                let response = await fetch(url, {
                     headers: {
                         "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFiZTlmMDRiY2RlMTAwMTc2MTZhZDMiLCJpYXQiOjE2MDUzOTExNTUsImV4cCI6MTYwNjYwMDc1NX0.c1MEuYyIov_RFLDWx8kty3caqubZKDXluy2Vv1JUr5w"
                     }
                 })
                 let data = await response.json();
                 console.log(data)
+
+                data.forEach(movies => {
+                    if (id === movies._id) {
+                        console.log("IT IS")
+                    } else {
+                        console.log("GO TO SLEEP")
+                    }
+                });
 
             }
             catch (error) {
